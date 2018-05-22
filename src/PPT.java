@@ -9,5 +9,8 @@ public class PPT{
 		Node n = new Node(depth);//create the first node
 		System.out.println("Root node: " + n);
 
+		n.printTree(1);
+		System.out.println("\n");
+
 	}
 }
