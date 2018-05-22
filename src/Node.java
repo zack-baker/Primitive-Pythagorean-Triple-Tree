@@ -10,9 +10,11 @@ public class Node{
 	public static final int[][] B = {{1,2,2},{2,1,2},{2,2,3}};
 	public static final int[][] C = {{-1,2,2},{-2,1,2},{-2,2,3}};
 
-	public Node[] children = new Node[3];
+	private Node[] children = new Node[3];
 
-	public Node parent;
+	private Node parent;
+
+	private boolean isChildless;
 
 
 	/**
@@ -25,7 +27,10 @@ public class Node{
 		this.vals = vals;
 		System.out.println("Verification passed, node " + this + " created");
 		if(depth>0){
+			isChildless = false;
 			generateChildren(depth-1);
+		}else{
+			isChildless = true;
 		}
 	}
 
@@ -39,6 +44,12 @@ public class Node{
 		vals[1] = 4;
 		vals[2] = 5;
 		this.parent = null;
+		if(depth>0){
+			isChildless = false;
+			generateChildren(depth-1);
+		}else{
+			isChildless = true;
+		}
 	}
 
 	/**
@@ -74,6 +85,7 @@ public class Node{
 
 	/**
 	*	This method generates and sets the three children of the node using matricies A,B and C
+	*	@param depth - the number of layers for each child to generate. 
 	*/
 	public void generateChildren(int depth){
 		int[] c1 = applyMatrix(A);
@@ -131,10 +143,28 @@ public class Node{
 	}
 	
 	/**
+	*	This method prints the full tree starting with this node	
+	*/
+	public void printTree(int tablevel){
+		System.out.println(toString());
+		if(!isChildless){
+	
+			for(int i=0;i<children.length;i++){
+				System.out.print("(" + tablevel + ")");
+				for(int j=0;j<tablevel;j++){
+
+					System.out.print("\t");
+				}
+				children[i].printTree(tablevel+1);
+			}
+		}
+	}
+	/**
 	*	Overridden toString method
 	*	@return - the string '(a,b,c)' where a,b,c are values of the node
 	*/
 	public String toString(){
 		return "(" + vals[0] + "," + vals[1] + "," + vals[2] + ")";
+
 	}
 }
