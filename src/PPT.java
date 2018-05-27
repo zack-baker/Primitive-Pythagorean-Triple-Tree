@@ -7,10 +7,12 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
+import javax.swing.SpringLayout;
 
 import java.awt.FlowLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+
 
 public class PPT{
 	
@@ -31,19 +33,8 @@ public class PPT{
 
 		frame.add(panel);
 		frame.pack();
-		
+
 		frame.setVisible(true);
 	}
 
-
-	// 	String num = JOptionPane.showInputDialog("Enter the depth of the tree");
-
-	// 	int depth = Integer.parseInt(num);
-	// 	Node n = new Node(depth);//create the first node
-	// 	System.out.println("Root node: " + n);
-
-	// 	n.printTree(1);
-	// 	System.out.println("\n");
-
-	// }
 }
