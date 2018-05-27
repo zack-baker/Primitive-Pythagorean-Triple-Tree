@@ -30,7 +30,6 @@ public class TreeButton extends JButton{
 		
 		public void actionPerformed(ActionEvent event){
 			if(wasClicked==false){
-				setText("Clicked");
 				JPanel p = (JPanel)(((TreeButton)event.getSource()).getParent());
 				btnNode.generateChildren(0);
 				Node[] children = btnNode.getChildren();
